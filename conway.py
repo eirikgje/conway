@@ -6,7 +6,7 @@ import time
 ion()
 hold(False)
 
-numcells = 10
+numcells = 100
 numstarts = 2000
 
 nind = np.arange(numcells*numcells)
@@ -93,19 +93,24 @@ living = np.zeros((numcells, numcells), dtype=int)
 living_next = np.zeros((numcells, numcells), dtype=int)
 
 #start = (np.random.rand(numstarts) * numcells **2).astype(int)
-#start = np.array([0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38]) + 5 * numcells + 1
 #start = np.array([[2, 0], [2, 1], [2, 2], [1, 2], [0, 1]])
 
 #Slider
-start = [(2, 0), (2, 1), (2, 2), (1, 2), (0, 1)]
-for i in range(len(start)):
-    living[start[i]] = 1
+#start = [(2, 0), (2, 1), (2, 2), (1, 2), (0, 1)]
+#for i in range(len(start)):
+#    living[start[i]] = 1
+
+
+#Block-laying switch engine (will go on indefinitely with an infinitely large grid)
+start = np.array([0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38])
+for i in start:
+    living[25, i] = 1
 
 #np.save('conway_state.npy', living)
 
 m = imshow(np.reshape(living, (numcells, numcells)), interpolation='none')
 draw()
-time.sleep(0.1)
+time.sleep(2)
 
 #neighbors = np.zeros((8, numcells, numcells), dtype=int)
 
